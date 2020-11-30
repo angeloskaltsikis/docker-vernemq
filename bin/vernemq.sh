@@ -157,8 +157,8 @@ sigterm_handler() {
         else
             terminating_node_name=VerneMQ@$IP_ADDRESS
         fi
-        # /vernemq/bin/vmq-admin cluster leave node=$terminating_node_name -k > /dev/null
-        /vernemq/bin/vmq-admin node stop > /dev/null
+        /vernemq/bin/vmq-admin cluster leave node=$terminating_node_name -k -i 1
+        /vernemq/bin/vmq-admin node stop
         kill -s TERM ${pid}
         exit 0
     fi
